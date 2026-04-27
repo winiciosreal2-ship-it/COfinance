@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO Finance - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+            <span class="navbar-brand">CO Finance Portal</span>
+            <div class="d-flex">
+                <span class="navbar-text me-3" id="userEmail"></span>
+                <button class="btn btn-outline-light" id="logoutBtn">Sair</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group" id="menuTabs">
+                    <button class="list-group-item list-group-item-action active" data-tab="documents">Meus Documentos</button>
+                    <button class="list-group-item list-group-item-action" data-tab="tasks">Tarefas</button>
+                    <button class="list-group-item list-group-item-action" data-tab="upload">Enviar Arquivos</button>
+                    <button class="list-group-item list-group-item-action" data-tab="requests">Solicitações Financeiras</button>
+                    <button class="list-group-item list-group-item-action" data-tab="messages">Mensagens</button>
+                    <button class="list-group-item list-group-item-action d-none" id="adminLogsBtn" data-tab="logs">Logs (Admin)</button>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div id="tabDocuments" class="tab-content active">
+                    <h3>Documentos Enviados pela Empresa</h3>
+                    <div id="documentsList" class="list-group mt-3"></div>
+                </div>
+                <div id="tabTasks" class="tab-content" style="display:none">
+                    <h3>Minhas Tarefas</h3>
+                    <div class="mb-3">
+                        <select id="taskFilter" class="form-select w-25">
+                            <option value="all">Todas</option>
+                            <option value="pendente">Pendentes</option>
+                            <option value="concluido">Concluídas</option>
+                        </select>
+                    </div>
+                    <div id="tasksList"></div>
+                </div>
+                <div id="tabUpload" class="tab-content" style="display:none">
+                    <h3>Enviar Documento para a Empresa</h3>
+                    <form id="uploadForm">
+                        <div class="mb-3">
+                            <label for="uploadTitle" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="uploadTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="uploadCategory" class="form-label">Categoria</label>
+                            <select class="form-select" id="uploadCategory">
+                                <option>Comprovante bancário</option>
+                                <option>Documento fiscal</option>
+                                <option>Prestação de contas</option>
+                                <option>Outros</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="uploadFile" class="form-label">Arquivo</label>
+                            <input type="file" class="form-control" id="uploadFile" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                    </form>
+                    <hr>
+                    <h4>Meus envios anteriores</h4>
+                    <div id="myUploadsList"></div>
+                </div>
+                <div id="tabRequests" class="tab-content" style="display:none">
+                    <h3>Solicitações Financeiras</h3>
+                    <form id="requestForm">
+                        <div class="mb-3">
+                            <label class="form-label">Tipo de solicitação</label>
+                            <select class="form-select" id="requestType" required>
+                                <option>Pagamento de salário</option>
+                                <option>Rescisão</option>
+                                <option>Décimo terceiro</option>
+                                <option>Férias</option>
+                                <option>Benefício</option>
+                                <option>Adiantamento para viagem</option>
+                                <option>Reembolso</option>
+                                <option>Pagamento de entrada para fornecedor</option>
+                                <option>Pagamento à vista</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descrição / valores</label>
+                            <textarea class="form-control" id="requestDesc" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Anexar comprovante (opcional)</label>
+                            <input type="file" class="form-control" id="requestFile">
+                        </div>
+                        <button type="submit" class="btn btn-warning">Enviar Solicitação</button>
+                    </form>
+                    <hr>
+                    <h4>Minhas solicitações</h4>
+                    <div id="requestsList"></div>
+                </div>
+                <div id="tabMessages" class="tab-content" style="display:none">
+                    <h3>Mensagens com a Empresa</h3>
+                    <div id="chatBox" class="border rounded p-3 mb-3" style="height:300px; overflow-y:scroll"></div>
+                    <form id="messageForm">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="messageText" placeholder="Digite sua mensagem...">
+                            <button class="btn btn-primary" type="submit">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="tabLogs" class="tab-content" style="display:none">
+                    <h3>Logs de Atividades (Admin)</h3>
+                    <div id="logsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+</body>
+</html>
