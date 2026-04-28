@@ -1,6 +1,6 @@
 // ========= CONFIGURAÇÃO SUPABASE =========
 // Você vai substituir estas URLs pelos dados do seu projeto Supabase (criar depois)
-const SUPABASE_URL = 'https://oheuiwijgytuztpetwme.supabase.co/rest/v1/';
+const SUPABASE_URL = 'https://oheuiwijgytuztpetwme.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_-y5iwgUU56zcFtjqx5ElNg__yoXdmnK';
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
