@@ -255,6 +255,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 // Expor funções globais
 window.completeTask = completeTask;
-
-const SUPABASE_URL = 'https://seu-projeto.supabase.co';
-const SUPABASE_ANON_KEY = 'sua-chave-anon-aqui';
