@@ -1,7 +1,7 @@
 // ========= CONFIGURAÇÃO SUPABASE =========
 // Você vai substituir estas URLs pelos dados do seu projeto Supabase (criar depois)
-const SUPABASE_URL = 'https://SEU_PROJETO.supabase.co';
-const SUPABASE_ANON_KEY = 'SUA_ANON_KEY';
+const SUPABASE_URL = 'https://oheuiwijgytuztpetwme.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_secret_Lo3y6eED3v4xQpvb_xW09w_kjJnnimK';
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let currentUser = null;
